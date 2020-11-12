@@ -221,12 +221,13 @@ class BreakScreen:
             window.resize(monitor_gemoetry.width, monitor_gemoetry.height)
             window.stick()
             window.set_keep_above(True)
+            # Gnome Shell 3.38 crashes if we full-screen only after present
+            window.fullscreen()
             window.present()
             # In other desktop environments, move the window after present
             window.move(x, y)
             window.resize(monitor_gemoetry.width, monitor_gemoetry.height)
             logging.info("Moved break screen to Display[%d, %d]", x, y)
-            window.fullscreen()
 
     def __update_count_down(self, count):
         """
